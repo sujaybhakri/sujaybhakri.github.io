@@ -153,3 +153,5 @@ window.addEventListener("keydown", (e) => {
 
 var audio = document.getElementById("audio");
 audio.volume = 0.2;
+
+localStorage.setItem("Highscore", hiscore);

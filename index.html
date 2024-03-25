@@ -52,6 +52,11 @@
         <h2>Snake</h2>
         <p>Eat the fruit, dont crash into the wall or YOURSELF!</p>
         <a href="snake.html">Play Now</a>
+        <script>
+          let highscore= localStorage.getItem('hiscore');
+          console.log(highscore);
+        </script>
+        <span style="font-weight: 1000;">HIGH SCORE:<script>document.write(highscore)</script> </span>
       </div>
       <div class="game">
         <h2>Rock Paper Scissors!</h2>
@@ -63,9 +68,7 @@
 
     <div style="clear: both"></div>
     <audio id="video" autoplay loop src="music/main.mp3"></audio>
-    <script src="website.js">
-      sessionStorage.getItem('scores')
-    </script>
+    
     
   </body>
 </html>
