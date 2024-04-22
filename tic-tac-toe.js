@@ -676,4 +676,4 @@ function endGame(who) {
 var audio = document.getElementById("audio");
 audio.volume = 0.2;
 
-localStorage.setItem("streak", player);
+localStorage.setItem("streak", score.player);
