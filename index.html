@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sujay.fun</title>
-    <link rel="stylesheet" href="website.css" />
-  </head>
-  <body>
-    <!-- <h1 style="background-color: beige; text-align: center; width: 200px">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujay.fun</title>
+  <link rel="stylesheet" href="website.css" />
+</head>
+
+<body>
+  <!-- <h1 style="background-color: beige; text-align: center; width: 200px">
       Sujay.fun
     </h1> -->
 
-    <div class="video">
-      <video
-        onloadstart="this.playbackRate = 0.5;"
-        id="vid"
-        autoplay
-        loop
-        muted
-        src="Pixel art animation scenes.mp4"
-      ></video>
-    </div>
-    
-    </div>
-    <div id="mySidepanel" class="sidepanel">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
-        >&times;</a
-      >
-      <a href="javascript:alert('Hey This is Sujay!\n I made this Website\nEnjoy :&#x29;')" id="about" >About</a>
-      <a href="javascript:alert('NOT IMPLEMENTED.')">Services</a>
-      <a href="javascript:alert('NOT IMPLEMENTED.')">Clients</a>
-      <a href="https://github.com/BOTTZX" target="_blank" >Contact</a>
-      <img class="QR" src="GooglePay_QR (1).png" alt="" />
-      <h2 style="color: white; text-align: center">Show some love &lt;3</h2>
-    </div>
+  <div class="video">
+    <video onloadstart="this.playbackRate = 0.5;" id="vid" autoplay loop muted
+      src="Pixel art animation scenes.mp4" type="video/mp4"></video>
+  </div>
 
-    <button class="openbtn" onclick="openNav()">&#9776; Sujay.Fun</button>
+  </div>
+  <div id="mySidepanel" class="sidepanel">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="javascript:alert('Hey This is Sujay!\n I made this Website\nEnjoy :&#x29;')" id="about">About</a>
+    <a href="javascript:alert('NOT IMPLEMENTED.')">Services</a>
+    <a href="javascript:alert('NOT IMPLEMENTED.')">Clients</a>
+    <a href="https://github.com/BOTTZX" target="_blank">Contact</a>
+    <img class="QR" src="GooglePay_QR (1).png" alt="" />
+    <h2 style="color: white; text-align: center">Show some love &lt;3</h2>
+  </div>
 
-    <div class="games-container">
-      <div class="game">
-        <h2>Tic-Tac-Toe</h2>
-        <p>Play classic tic-tac-toe with computer</p>
-        <a id="tic-tac-toe" href="tic-tac-toe.html">Play Now</a>
-        <script>
-          let streak= localStorage.getItem('streak');
-          console.log(streak);
-        </script>
-        <span style="font-weight: 800;">CURRENT WIN STREAK:<script>document.write(streak)</script> </span>
-      </div>
-      <div class="game">
-        <h2>Dots and Boxes</h2>
-        <p>Play the game like you used to during the class!</p>
-        <a id="dots-and-boxes" href="dots-and-boxes.html">Play Now</a>
-      </div>
-      <div class="game">
-        <h2>Snake</h2>
-        <p>Eat the fruit, dont crash into the wall or YOURSELF!</p>
-        <a href="snake.html">Play Now</a>
-        <script>
-          let highscore= localStorage.getItem('hiscore');
-          console.log(highscore);
-        </script>
-        <span style="font-weight: 1000;">HIGH SCORE:<script>document.write(highscore)</script> </span>
-      </div>
-      <div class="game">
-        <h2>Rock Paper Scissors!</h2>
-        <p>&nbsp;It's literally Rock Paper Scissors.&nbsp;</p>
+  <button class="openbtn" onclick="openNav()">&#9776; Sujay.Fun</button>
 
-        <a href="rps.html">Play Now</a>
-      </div>
+  <div class="games-container">
+    <div class="game">
+      <h2>Tic-Tac-Toe</h2>
+      <p>Play classic tic-tac-toe with computer</p>
+      <a id="tic-tac-toe" href="tic-tac-toe.html">Play Now</a>
+      <script>
+        let streak = localStorage.getItem('streak');
+        console.log(streak);
+      </script>
+      if(streak==)
+      <span style="font-weight: 800;">CURRENT WIN STREAK:
+        <script>document.write(streak)</script>
+      </span>
     </div>
+    <div class="game">
+      <h2>Dots and Boxes</h2>
+      <p>Play the game like you used to during the class!</p>
+      <a id="dots-and-boxes" href="dots-and-boxes.html">Play Now</a>
+    </div>
+    <div class="game">
+      <h2>Snake</h2>
+      <p>Eat the fruit, dont crash into the wall or YOURSELF!</p>
+      <a href="snake.html">Play Now</a>
+      <script>
+        let highscore = localStorage.getItem('hiscore');
+        console.log(highscore);
+      </script>
+      <span style="font-weight: 1000;">HIGH SCORE:
+        <script>document.write(highscore)</script>
+      </span>
+    </div>
+    <div class="game">
+      <h2>Rock Paper Scissors!</h2>
+      <p>&nbsp;It's literally Rock Paper Scissors.&nbsp;</p>
 
-    <div style="clear: both"></div>
-    <audio id="video" autoplay loop src="music/main.mp3"></audio>
-    
-    <script src="website.js"></script>
-    
-  </body>
+      <a href="rps.html">Play Now</a>
+    </div>
+  </div>
+
+  <div style="clear: both"></div>
+  <audio id="video" autoplay loop src="music/main.mp3"></audio>
+
+  <script src="website.js"></script>
+
+</body>
+
 </html>

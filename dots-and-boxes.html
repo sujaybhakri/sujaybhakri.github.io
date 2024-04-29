@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="dots-and-boxes.css" />
-  </head>
-  <body>
-    <div class="controls">
-      <label
-        >Grid Size
-        <input type="range" min="5" , max="10" value="7" id="gridSize" />
-      </label>
 
-      <div class="player">
-        <span class="player-num">Player 1 </span><br />
-        <input type="color" value="#ff6666" id="p1Colour" />
-        <span class="score" id="p1Score">0</span>
-        <div class="turn" id="turn">
-          <img src="arrow.png" alt="" />
-        </div>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="dots-and-boxes.css" />
+</head>
 
-      <div class="player">
-        <span class="player-num">Player 2 </span>
-        <input type="color" value="#3CB371" id="p2Colour" />
-        <span class="score" id="p2Score">0</span><br />
-      </div>
-      <div class="goback">
-        <span
-          ><a href="index.html"><button>GO BACK</button></a>
-        </span>
+<body>
+  <div class="controls">
+    <label>Grid Size
+      <input type="range" min="5" , max="10" value="7" id="gridSize" />
+    </label>
+
+    <div class="player">
+      <span class="player-num">Player 1 </span><br />
+      <input type="color" value="#ff6666" id="p1Colour" />
+      <span class="score" id="p1Score">0</span>
+      <div class="turn" id="turn">
+        <img src="arrow.png" alt="" />
       </div>
     </div>
 
-    <div class="play-area">
-      <canvas>Canvas not supported by browser</canvas>
+    <div class="player">
+      <span class="player-num">Player 2 </span>
+      <input type="color" value="#3CB371" id="p2Colour" />
+      <span class="score" id="p2Score">0</span><br />
     </div>
-    <audio id="audio" autoplay loop src="music/dots.mp3"></audio>
+    <div class="goback">
+      <span><a href="index.html"><button>GO BACK</button></a>
+      </span>
+    </div>
+  </div>
 
-    <script src="dots-and-boxes.js"></script>
-    <script src="website.js">
-      sessionStorage.setItem('scores',scores)
-    </script>
-  </body>
+  <div class="play-area">
+    <canvas>Canvas not supported by browser</canvas>
+  </div>
+  <audio id="audio" autoplay loop src="music/dots.mp3"></audio>
+
+  <script src="dots-and-boxes.js"></script>
+  <script src="website.js">
+    sessionStorage.setItem('scores', scores)
+  </script>
+</body>
+
 </html>
