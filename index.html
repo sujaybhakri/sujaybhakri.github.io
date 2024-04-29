@@ -14,8 +14,8 @@
     </h1> -->
 
   <div class="video">
-    <video onloadstart="this.playbackRate = 0.5;" id="vid" autoplay loop muted
-      src="Pixel art animation scenes.mp4" type="video/mp4"></video>
+    <video onloadstart="this.playbackRate = 0.5;" id="vid" autoplay loop muted src="Pixel art animation scenes.mp4"
+      type="video/mp4"></video>
   </div>
 
   </div>
@@ -36,13 +36,13 @@
       <h2>Tic-Tac-Toe</h2>
       <p>Play classic tic-tac-toe with computer</p>
       <a id="tic-tac-toe" href="tic-tac-toe.html">Play Now</a>
-      <script>
-        let streak = localStorage.getItem('streak');
-        console.log(streak);
-      </script>
-      if(streak==)
+
       <span style="font-weight: 800;">CURRENT WIN STREAK:
-        <script>document.write(streak)</script>
+        <script>
+          let streak = localStorage.getItem('streak');
+          console.log(streak);
+          document.write(streak);
+        </script>
       </span>
     </div>
     <div class="game">
