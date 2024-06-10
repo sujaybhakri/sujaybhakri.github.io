@@ -297,12 +297,12 @@ function cellClicked(id) {
   moves += 1;
   document.getElementById(id).innerHTML = playerText;
   // randomize orientation (for looks only)
-  var rand = Math.random();
-  if (rand < 0.3) {
-    document.getElementById(id).style.transform = "rotate(180deg)";
-  } else if (rand > 0.6) {
-    document.getElementById(id).style.transform = "rotate(90deg)";
-  }
+  // var rand = Math.random();
+  // if (rand < 0.3) {
+  //   document.getElementById(id).style.transform = "rotate(180deg)";
+  // } else if (rand > 0.6) {
+  //   document.getElementById(id).style.transform = "rotate(90deg)";
+  // }
   document.getElementById(id).style.cursor = "default";
   myGrid.cells[cell] = player;
   // Test if we have a winner:
@@ -643,4 +643,4 @@ function endGame(who) {
 var audio = document.getElementById("audio");
 audio.volume = 0.2;
 
-
+console.log("hi");
