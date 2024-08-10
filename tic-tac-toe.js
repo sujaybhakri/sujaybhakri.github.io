@@ -633,7 +633,7 @@ function endGame(who) {
   document.getElementById("computer_score").innerHTML = score.computer;
   document.getElementById("tie_score").innerHTML = score.ties;
   document.getElementById("player_score").innerHTML = score.player;
-  localStorage.setItem("streak", player);
+  sessionStorage.setItem("streak", score.player);
   for (var i = 0; i <= 8; i++) {
     var id = "cell" + i.toString();
     document.getElementById(id).style.cursor = "default";
@@ -641,6 +641,6 @@ function endGame(who) {
   setTimeout(restartGame, 800);
 }
 var audio = document.getElementById("audio");
-audio.volume = 0.2;
+audio.volume = 0.1;
 
 console.log("hi");

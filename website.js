@@ -9,8 +9,7 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidepanel").style.width = "0";
 }
-var audio = document.getElementById("audio");
-audio.volume = 0.2;
+
 
 // var vid = doc.getElementById("vid");
 // vid.playbackrate = 0.5;

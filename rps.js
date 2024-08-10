@@ -67,4 +67,4 @@ optionImages.forEach((image, index) => {
 });
 
 var v = document.getElementById("audio");
-v.volume = 0.2;
+v.volume = 0.1;
