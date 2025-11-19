@@ -73,12 +73,12 @@ var moves = 0,
     computer: 0,
   },
   // FIXED: proper closing span tags
-  xText = '<span class="x">&times;</span>',
-  oText = '<span class="o">o</span>',
   playerText = xText,
   computerText = oText,
   difficulty = 1,
   myGrid = null;
+xText = '<span class="x">&times;</span>';
+oText = '<span class="o">o</span>';
 
 //==================================
 // GRID OBJECT
