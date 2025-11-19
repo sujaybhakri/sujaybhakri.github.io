@@ -14,7 +14,11 @@ document.addEventListener("keydown", function (evt) {
 // When the user clicks anywhere outside of ANY modal dialog, close it
 window.addEventListener("click", function (evt) {
   // If clicked element has the 'modal' class, hide that modal
-  if (evt.target && evt.target.classList && evt.target.classList.contains("modal")) {
+  if (
+    evt.target &&
+    evt.target.classList &&
+    evt.target.classList.contains("modal")
+  ) {
     evt.target.style.display = "none";
   }
 });
@@ -594,4 +598,4 @@ if (audio) {
   } catch (e) {}
 }
 
-console.log("hi");
+console.log("hello");
