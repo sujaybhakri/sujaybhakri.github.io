@@ -1,8 +1,3 @@
-/* tic-tac-toe.css
-   Full stylesheet — copy & paste into your project.
-   Adjust colors/sizes if you want a different look.
-*/
-
 /* ---------- Base / page layout ---------- */
 :root {
   --bg: #222;
@@ -21,7 +16,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -54,7 +50,8 @@ p.home a {
 }
 
 /* Smaller headings used in modals/options */
-h2, h3 {
+h2,
+h3 {
   margin: 0;
   padding: 0;
   color: var(--panel-ink);
@@ -125,7 +122,8 @@ table {
 
 /* ---------- X and O styling ---------- */
 /* Make sizes explicit so marks reliably fit 90x90 cells regardless of inherited font sizes */
-.x, .o {
+.x,
+.o {
   display: inline-block;
   line-height: 1;
   user-select: none;
@@ -141,7 +139,7 @@ table {
   position: relative;
   top: -4px; /* tiny vertical nudge to visually center */
   cursor: default;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
 }
 
 /* O appearance */
@@ -151,7 +149,7 @@ table {
   position: relative;
   top: -4px;
   cursor: default;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.12);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
 }
 
 /* ---------- Restart button ---------- */
@@ -167,21 +165,21 @@ table {
   color: var(--fg);
   background: transparent;
   border-radius: 6px;
-  transition: transform .12s ease, background .12s ease;
+  transition: transform 0.12s ease, background 0.12s ease;
   border: none;
   user-select: none;
 }
 
 #restart:hover {
   transform: translateY(-2px);
-  background: rgba(255,255,255,0.02);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 /* ---------- Winning highlight ---------- */
 .win-color {
   background-color: var(--panel); /* to keep it consistent with modal panels */
   color: var(--panel-ink) !important;
-  transition: background-color .25s ease;
+  transition: background-color 0.25s ease;
 }
 
 /* If you want a different highlight for the winning cell text itself */
@@ -212,11 +210,11 @@ table {
   font-weight: 700;
   margin: 12% auto;
   padding: 18px;
-  border: 2px solid rgba(0,0,0,0.15);
+  border: 2px solid rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   width: 380px;
   max-width: 90%;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   text-align: center;
 }
 
@@ -227,7 +225,7 @@ table {
 
 /* Close "×" */
 .close {
-  color: rgba(120,120,120,0.95);
+  color: rgba(120, 120, 120, 0.95);
   float: right;
   font-size: 32px;
   font-weight: 700;
@@ -247,7 +245,7 @@ table {
   font-size: 0.95rem;
   padding: 8px 14px;
   border-radius: 6px;
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   background: transparent;
   cursor: pointer;
   font-weight: 700;
@@ -264,7 +262,7 @@ table {
 .modal-content button#noBtn {
   background: transparent;
   color: var(--panel-ink);
-  border: 1px solid rgba(0,0,0,0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 /* ---------- Options radio layout ---------- */
@@ -287,12 +285,14 @@ audio {
 
 /* ---------- Responsive tweaks ---------- */
 @media (max-width: 420px) {
-  .td_game, .fixed {
+  .td_game,
+  .fixed {
     width: 72px;
     height: 72px;
     line-height: 72px;
   }
-  .x, .o {
+  .x,
+  .o {
     font-size: 56px;
     top: -3px;
   }
@@ -306,15 +306,15 @@ audio {
   }
 }
 
-
-.fixed .x, .fixed .o {
+.fixed .x,
+.fixed .o {
   transform: scale(0.8);
   opacity: 0;
-  transition: transform .14s cubic-bezier(.2,.9,.2,1), opacity .14s ease;
+  transition: transform 0.14s cubic-bezier(0.2, 0.9, 0.2, 1), opacity 0.14s ease;
 }
 
-.fixed.filled .x, .fixed.filled .o {
+.fixed.filled .x,
+.fixed.filled .o {
   transform: scale(1);
   opacity: 1;
 }
-
