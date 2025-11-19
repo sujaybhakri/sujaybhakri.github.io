@@ -275,8 +275,28 @@ function cellClicked(id) {
     return false;
   }
   moves += 1;
-  document.getElementById(id).innerHTML = playerText;
-  document.getElementById(id).style.cursor = "default";
+
+  var el = document.getElementById(id);
+  if (!el) return false;
+
+  // Clear and insert an explicit span element
+  el.innerHTML = "";
+  var mark = document.createElement("span");
+  mark.className = player === x ? "x" : "o";
+  mark.textContent = player === x ? "\u00D7" : "o";
+
+  // Inline safe fallbacks to guarantee visibility even if CSS is missing/overridden
+  mark.style.display = "inline-block";
+  mark.style.fontSize = "72px";
+  mark.style.lineHeight = "1";
+  mark.style.userSelect = "none";
+  // If CSS has color rules they will apply; fallback to guaranteed visible colors:
+  mark.style.color = player === x ? "darksalmon" : "aquamarine";
+
+  el.appendChild(mark);
+  el.classList.add("filled");
+  el.style.cursor = "default";
+
   myGrid.cells[cell] = player;
   if (moves >= 5) {
     winner = checkWin();
@@ -324,6 +344,8 @@ function makeComputerMove() {
   var cell = -1,
     myArr = [],
     corners = [0, 2, 6, 8];
+
+  // ---- Begin existing AI / decision logic (unchanged) ----
   if (moves >= 3) {
     cell = myGrid.getFirstWithTwoInARow(computer);
     if (cell === false) {
@@ -337,7 +359,6 @@ function makeComputerMove() {
         cell = myArr[intRandom(0, myArr.length - 1)];
       }
     }
-    // Avoid a catch-22 situation:
     if (
       moves == 3 &&
       myGrid.cells[4] == computer &&
@@ -412,11 +433,27 @@ function makeComputerMove() {
       cell = myArr[intRandom(0, myArr.length - 1)];
     }
   }
+  // ---- End existing AI logic ----
+
   var id = "cell" + cell.toString();
   var el = document.getElementById(id);
   if (el) {
-    el.innerHTML = computerText;
+    el.innerHTML = "";
+    var mark = document.createElement("span");
+    mark.className = computer === x ? "x" : "o";
+    mark.textContent = computer === x ? "\u00D7" : "o";
+
+    // inline fallback styles to force visible output
+    mark.style.display = "inline-block";
+    mark.style.fontSize = "72px";
+    mark.style.lineHeight = "1";
+    mark.style.userSelect = "none";
+    mark.style.color = computer === x ? "darksalmon" : "aquamarine";
+
+    el.appendChild(mark);
+    el.classList.add("filled");
     el.style.cursor = "default";
+
     var rand = Math.random();
     if (rand < 0.3) {
       el.style.transform = "rotate(180deg)";
@@ -426,6 +463,7 @@ function makeComputerMove() {
       el.style.transform = "";
     }
   }
+
   myGrid.cells[cell] = computer;
   moves += 1;
   if (moves >= 5) {
