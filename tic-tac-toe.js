@@ -58,6 +58,11 @@ function intRandom(min, max) {
   return Math.floor(rand);
 }
 
+// ======= IMPORTANT: Mark strings declared BEFORE they're used =======
+// proper closing span tags and declared with var
+var xText = '<span class="x">&times;</span>';
+var oText = '<span class="o">o</span>';
+
 // GLOBAL VARIABLES
 var moves = 0,
   winner = 0,
@@ -72,13 +77,11 @@ var moves = 0,
     player: 0,
     computer: 0,
   },
-  // FIXED: proper closing span tags
+  // initialize player/computer text from the strings above
   playerText = xText,
   computerText = oText,
   difficulty = 1,
   myGrid = null;
-xText = '<span class="x">&times;</span>';
-oText = '<span class="o">o</span>';
 
 //==================================
 // GRID OBJECT
@@ -87,6 +90,10 @@ oText = '<span class="o">o</span>';
 // Grid constructor
 function Grid() {
   this.cells = new Array(9);
+  // ensure cells are initialized to 0
+  for (var i = 0; i < this.cells.length; i++) {
+    this.cells[i] = 0;
+  }
 }
 
 // Grid methods
@@ -263,7 +270,7 @@ function makePlayerO() {
 
 function cellClicked(id) {
   var idName = id.toString();
-  var cell = parseInt(idName[idName.length - 1]);
+  var cell = parseInt(idName[idName.length - 1], 10);
   if (myGrid.cells[cell] > 0 || whoseTurn !== player || gameOver) {
     return false;
   }
@@ -295,10 +302,13 @@ function restartGame(ask) {
   myGrid.reset();
   for (var i = 0; i <= 8; i++) {
     var id = "cell" + i.toString();
-    document.getElementById(id).innerHTML = "";
-    document.getElementById(id).style.cursor = "pointer";
-    document.getElementById(id).classList.remove("win-color");
-    document.getElementById(id).style.transform = "";
+    var el = document.getElementById(id);
+    if (el) {
+      el.innerHTML = "";
+      el.style.cursor = "pointer";
+      el.classList.remove("win-color");
+      el.style.transform = "";
+    }
   }
   if (ask === true) {
     setTimeout(showOptions, 200);
@@ -403,15 +413,18 @@ function makeComputerMove() {
     }
   }
   var id = "cell" + cell.toString();
-  document.getElementById(id).innerHTML = computerText;
-  document.getElementById(id).style.cursor = "default";
-  var rand = Math.random();
-  if (rand < 0.3) {
-    document.getElementById(id).style.transform = "rotate(180deg)";
-  } else if (rand > 0.6) {
-    document.getElementById(id).style.transform = "rotate(90deg)";
-  } else {
-    document.getElementById(id).style.transform = "";
+  var el = document.getElementById(id);
+  if (el) {
+    el.innerHTML = computerText;
+    el.style.cursor = "default";
+    var rand = Math.random();
+    if (rand < 0.3) {
+      el.style.transform = "rotate(180deg)";
+    } else if (rand > 0.6) {
+      el.style.transform = "rotate(90deg)";
+    } else {
+      el.style.transform = "";
+    }
   }
   myGrid.cells[cell] = computer;
   moves += 1;
@@ -440,7 +453,8 @@ function checkWin() {
       var tmpAr = myGrid.getRowIndices(i);
       for (var j = 0; j < tmpAr.length; j++) {
         var str = "cell" + tmpAr[j];
-        document.getElementById(str).classList.add("win-color");
+        var el = document.getElementById(str);
+        if (el) el.classList.add("win-color");
       }
       setTimeout(endGame, 1000, winner);
       return winner;
@@ -461,7 +475,8 @@ function checkWin() {
       var tmpAr = myGrid.getColumnIndices(i);
       for (var j = 0; j < tmpAr.length; j++) {
         var str = "cell" + tmpAr[j];
-        document.getElementById(str).classList.add("win-color");
+        var el = document.getElementById(str);
+        if (el) el.classList.add("win-color");
       }
       setTimeout(endGame, 1000, winner);
       return winner;
@@ -486,7 +501,8 @@ function checkWin() {
       var tmpAr = myGrid.getDiagIndices(i);
       for (var j = 0; j < tmpAr.length; j++) {
         var str = "cell" + tmpAr[j];
-        document.getElementById(str).classList.add("win-color");
+        var el = document.getElementById(str);
+        if (el) el.classList.add("win-color");
       }
       setTimeout(endGame, 1000, winner);
       return winner;
@@ -505,43 +521,57 @@ function checkWin() {
 }
 
 function announceWinner(text) {
-  document.getElementById("winText").innerHTML = text;
-  document.getElementById("winAnnounce").style.display = "block";
+  var winEl = document.getElementById("winText");
+  if (winEl) winEl.innerHTML = text;
+  var dlg = document.getElementById("winAnnounce");
+  if (dlg) dlg.style.display = "block";
   setTimeout(closeModal, 1400, "winAnnounce");
 }
 
 function askUser(text) {
-  document.getElementById("questionText").innerHTML = text;
-  document.getElementById("userFeedback").style.display = "block";
+  var qEl = document.getElementById("questionText");
+  if (qEl) qEl.innerHTML = text;
+  var dlg = document.getElementById("userFeedback");
+  if (dlg) dlg.style.display = "block";
 }
 
 function showOptions() {
-  if (player == o) {
-    document.getElementById("rx").checked = false;
-    document.getElementById("ro").checked = true;
-  } else if (player == x) {
-    document.getElementById("rx").checked = true;
-    document.getElementById("ro").checked = false;
+  var rx = document.getElementById("rx"),
+    ro = document.getElementById("ro"),
+    r0 = document.getElementById("r0"),
+    r1 = document.getElementById("r1"),
+    dlg = document.getElementById("optionsDlg");
+  if (rx && ro) {
+    if (player == o) {
+      rx.checked = false;
+      ro.checked = true;
+    } else {
+      rx.checked = true;
+      ro.checked = false;
+    }
   }
-  if (difficulty === 0) {
-    document.getElementById("r0").checked = true;
-    document.getElementById("r1").checked = false;
-  } else {
-    document.getElementById("r0").checked = false;
-    document.getElementById("r1").checked = true;
+  if (r0 && r1) {
+    if (difficulty === 0) {
+      r0.checked = true;
+      r1.checked = false;
+    } else {
+      r0.checked = false;
+      r1.checked = true;
+    }
   }
-  document.getElementById("optionsDlg").style.display = "block";
+  if (dlg) dlg.style.display = "block";
 }
 
 function getOptions() {
   var diffs = document.getElementsByName("difficulty");
   for (var i = 0; i < diffs.length; i++) {
     if (diffs[i].checked) {
-      difficulty = parseInt(diffs[i].value);
+      difficulty = parseInt(diffs[i].value, 10);
       break;
     }
   }
-  if (document.getElementById("rx").checked === true) {
+  var rx = document.getElementById("rx");
+  if (rx && rx.checked === true) {
     player = x;
     computer = o;
     whoseTurn = player;
@@ -555,7 +585,8 @@ function getOptions() {
     computerText = xText;
     setTimeout(makeComputerMove, 400);
   }
-  document.getElementById("optionsDlg").style.display = "none";
+  var dlg = document.getElementById("optionsDlg");
+  if (dlg) dlg.style.display = "none";
 }
 
 function closeModal(id) {
@@ -575,9 +606,12 @@ function endGame(who) {
   whoseTurn = 0;
   moves = 0;
   winner = 0;
-  document.getElementById("computer_score").innerHTML = score.computer;
-  document.getElementById("tie_score").innerHTML = score.ties;
-  document.getElementById("player_score").innerHTML = score.player;
+  var cs = document.getElementById("computer_score");
+  var ts = document.getElementById("tie_score");
+  var ps = document.getElementById("player_score");
+  if (cs) cs.innerHTML = score.computer;
+  if (ts) ts.innerHTML = score.ties;
+  if (ps) ps.innerHTML = score.player;
   try {
     sessionStorage.setItem("streak", score.player);
   } catch (e) {
@@ -585,7 +619,8 @@ function endGame(who) {
   }
   for (var i = 0; i <= 8; i++) {
     var id = "cell" + i.toString();
-    document.getElementById(id).style.cursor = "default";
+    var el = document.getElementById(id);
+    if (el) el.style.cursor = "default";
   }
   setTimeout(restartGame, 800);
 }
